@@ -78,46 +78,8 @@
 								.default.btn-circle 🍓
 							td Japan
 
-		.example
-			.example__good-reason
-				b Good - 
-				span Labels on the left aligned for easy visual scanning
-			.example__bad-reason
-				b Bad - 
-				span Labels next to each other, adds extra width
-			.example__good-content
-				form.form
-					fieldset 
-						legend Select your handle
-						label Name
-						input.form__input(type="text" name="name" placeholder="Enter Name")
-						label Icon
-						select.form__dropdown
-							option(selected="selected") Select option
-							option Alpha
-							option Beta
-							option Charlie
-						.form__footer
-							.default.btn-circle No
-							.default.btn-circle OK
-			.example__bad-content
-				form.form-bad
-					fieldset 
-						legend Select your handle
-						.form-bad__item
-							label Name
-							input(type="text" name="name" placeholder="Enter Name")
-						.form-bad__item
-							label Icon
-							select
-								option(selected="selected") Select option
-								option Alpha
-								option Beta
-								option Charlie
-						.form-bad__footer
-							.default.btn-circle No
-							.default.btn-circle OK
 
+		ExampleButtonForm
 		ExampleButtonDialog
 </template>
 
@@ -125,11 +87,13 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import Example from '@/components/Example.vue';
 import ExampleButtonDialog from '@/components/ExampleButtonDialog.vue';
+import ExampleButtonForm from '@/components/ExampleButtonForm.vue';
 
 @Component({
 	components: {
 		Example,
 		ExampleButtonDialog,
+		ExampleButtonForm,
 	},
 })
 export default class Buttons extends Vue {}
@@ -137,9 +101,7 @@ export default class Buttons extends Vue {}
 
 <style lang="scss" scoped>
 @import 'src/toolkit.scss';
-$main: hsla(0, 0, 80%, 1);
-$mainL1: lighten($main, 10%);
-$mainD1: darken($main, 10%);
+@import 'src/variables.scss';
 
 body {
 	display: flex;
@@ -154,9 +116,7 @@ body {
 	//justify-content: center;
 	align-items: center;
 }
-.default {
-	@include btn-circle(white, 14px);
-}
+
 .example {
 	width: 52rem;
 	//border: 1px solid $main;
@@ -204,27 +164,6 @@ body {
 	th {
 		border-bottom: 0.1rem solid lightgray;
 		padding: 0.2rem 1rem;
-	}
-}
-
-.panel {
-	width: 20rem;
-	border: 1px solid $main;
-	&__header,
-	&__body,
-	&__footer {
-		padding: 1rem;
-	}
-	&__header {
-		background-image: linear-gradient($main, $mainL1);
-	}
-	&__body {
-		padding-bottom: 0;
-	}
-	&__footer {
-		display: flex;
-		flex-direction: row-reverse;
-		padding-top: 0;
 	}
 }
 
