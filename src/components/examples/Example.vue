@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class Example extends Vue {}
@@ -35,6 +35,7 @@ export default class Example extends Vue {}
 		font-weight: bold;
 		font-size: 2rem;
 		text-align: left;
+		margin: 1rem 0;
 	}
 	&__good-reason,
 	&__good-content,
@@ -45,6 +46,7 @@ export default class Example extends Vue {}
 	&__good-reason,
 	&__bad-reason {
 		text-align: left;
+		padding: 1rem;
 	}
 	&__bad {
 	}

@@ -1,3 +1,11 @@
 $main: hsla(0, 0, 80%, 1);
 $mainL1: lighten($main, 10%);
+$mainL2: lighten($main, 20%);
+$mainL3: lighten($main, 30%);
+$mainL4: lighten($main, 40%);
+$mainL5: lighten($main, 50%);
 $mainD1: darken($main, 10%);
+$mainD2: darken($main, 20%);
+$mainD3: darken($main, 30%);
+$mainD4: darken($main, 40%);
+$mainD5: darken($main, 50%);

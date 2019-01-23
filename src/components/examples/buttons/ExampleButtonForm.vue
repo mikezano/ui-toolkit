@@ -43,42 +43,60 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import Example from '@/components/Example.vue';
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Example from "@/components/examples/Example.vue";
 
 @Component({
 	components: {
-		Example,
-	},
+		Example
+	}
 })
 export default class ExampleButtonForm extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import 'src/toolkit.scss';
-@import 'src/variables.scss';
+@import "src/toolkit.scss";
+@import "src/variables.scss";
 
 .default {
 	@include btn-circle(white, 14px);
 }
-.panel {
+.form {
 	width: 20rem;
-	border: 1px solid $main;
-	&__header,
-	&__body,
-	&__footer {
+	fieldset {
 		padding: 1rem;
+		text-align: left;
 	}
-	&__header {
-		background-image: linear-gradient($main, $mainL1);
-	}
-	&__body {
-		padding-bottom: 0;
+	&__input,
+	&__dropdown {
+		display: block;
+		width: 100%;
+		padding: 0.3rem;
+		margin: 0.8rem auto;
+		border: 0.1rem solid $mainD1;
+		box-sizing: border-box;
 	}
 	&__footer {
 		display: flex;
 		flex-direction: row-reverse;
-		padding-top: 0;
+	}
+}
+
+.form-bad {
+	&__item {
+		display: block;
+	}
+	input,
+	select {
+		width: 80%;
+		padding: 0.3rem;
+		margin: 0.8rem auto;
+		border: 0.1rem solid $mainD1;
+		box-sizing: border-box;
+	}
+	&__footer {
+		display: flex;
+		flex-direction: row-reverse;
 	}
 }
 </style>
