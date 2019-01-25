@@ -4,10 +4,11 @@
 			| 1. Keeping things uniform
 		template(slot='good-reason')
 			b Good - 
-			span inputs are sized the same, creating a nice soothing feel...aaahhh
+			span inputs are sized the same, creating a nice Feng Shui feel...aaahhh
 		template(slot='bad-reason')
-			b Bad - 
-			span 😨 All types of sizes input appear
+			b Not as good - 
+			span Different alignments between the header text and 
+			| the form contents, spacing is off,creating a jagged, unpolished look 😨.
 		template(slot='good-content')
 			form.form
 				fieldset 
@@ -131,5 +132,20 @@ export default class ExampleFormUniformity extends Vue {
 }
 
 .form-bad {
+	&__item {
+		display: block;
+	}
+	input,
+	select {
+		width: 80%;
+		padding: 0.3rem;
+		margin: 0.8rem auto;
+		border: 0.1rem solid $mainD1;
+		box-sizing: border-box;
+	}
+	&__footer {
+		display: flex;
+		flex-direction: row-reverse;
+	}
 }
 </style>

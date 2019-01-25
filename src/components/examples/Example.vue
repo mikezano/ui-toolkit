@@ -27,7 +27,6 @@ export default class Example extends Vue {}
 	grid-template-columns: 50% 50%;
 
 	justify-content: space-between;
-	align-items: center;
 
 	&__title {
 		grid-row: 1;

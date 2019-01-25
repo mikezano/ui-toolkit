@@ -6,15 +6,18 @@
 			| not sized equally, buttons get disabled, layouts are not uniform.
 		
 		ExampleFormUniformity
+		ExampleFormExcessFields
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import ExampleFormUniformity from "@/components/examples/forms/ExampleFormUniformity.vue";
+import ExampleFormExcessFields from "@/components/examples/forms/ExampleFormExcessFields.vue";
 
 @Component({
 	components: {
-		ExampleFormUniformity
+		ExampleFormUniformity,
+		ExampleFormExcessFields
 	}
 })
 export default class Forms extends Vue {}
