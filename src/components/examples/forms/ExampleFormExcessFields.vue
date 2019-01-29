@@ -1,7 +1,7 @@
 <template lang="pug">
 	Example
 		template(slot='title')
-			| 2. Reducing amount of fields
+			| 2. Reduce the amount of fields
 		template(slot='good-reason')
 			b Good - 
 			span Lots of possibilities, seperate them into different tabs
@@ -168,8 +168,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import Example from '@/components/examples/Example.vue';
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Example from "@/components/examples/Example.vue";
 
 interface Hash {
 	[s: string]: string;
@@ -177,30 +177,30 @@ interface Hash {
 
 @Component({
 	components: {
-		Example,
-	},
+		Example
+	}
 })
 export default class ExampleFormExcessFields extends Vue {
 	public letterToName: Hash = {};
 	public monthToName: Hash = {};
-	private selectedLetter: string = '';
-	private selectedMonth: string = '';
-	private selectedFruit: string = '';
+	private selectedLetter: string = "";
+	private selectedMonth: string = "";
+	private selectedFruit: string = "";
 
 	public mounted() {
-		this.letterToName['A'] = 'Perky';
-		this.letterToName['B'] = 'Nipper';
-		this.letterToName['C'] = 'Bubbles';
-		this.letterToName['D'] = 'Happy';
+		this.letterToName["A"] = "Perky";
+		this.letterToName["B"] = "Nipper";
+		this.letterToName["C"] = "Bubbles";
+		this.letterToName["D"] = "Happy";
 
-		this.monthToName['Jan'] = 'Angel-Pants';
-		this.monthToName['Feb'] = 'Floppy-Feet';
-		this.monthToName['Mar'] = 'Plum-Pants';
+		this.monthToName["Jan"] = "Angel-Pants";
+		this.monthToName["Feb"] = "Floppy-Feet";
+		this.monthToName["Mar"] = "Plum-Pants";
 	}
 
 	public showName() {
 		console.log(this.selectedLetter);
-		console.log(this.letterToName['A']);
+		console.log(this.letterToName["A"]);
 		alert(this.selectedLetter);
 		const finalName = `${this.letterToName[this.selectedLetter]} ${
 			this.monthToName[this.selectedMonth]
@@ -211,8 +211,8 @@ export default class ExampleFormExcessFields extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/toolkit.scss';
-@import 'src/variables.scss';
+@import "src/toolkit.scss";
+@import "src/variables.scss";
 
 .default {
 	@include btn-circle(white, 14px);

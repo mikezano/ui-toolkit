@@ -84,6 +84,6 @@ body {
 }
 .slide-menu-enter,
 .slide-menu-leave-to {
-	transform: translateX(-200px);
+	transform: translateX(-300px);
 }
 </style>

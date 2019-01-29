@@ -9,10 +9,10 @@
 		.side-menu__sections
 			.side-menu__section-header Usage
 			ul.side-menu__section-list
-				router-link(to="/how_to_use" tag="li") How to use
+				router-link(to="/how_to_use" tag="li") 
 				router-link(to="/test" tag="li") Test
 
-			.side-menu__section-header How to use...
+			.side-menu__section-header Properly using...
 			ul.side-menu__section-list
 				router-link(to="/buttons" tag="li") Buttons
 				router-link(to="/forms" tag="li") Forms
@@ -54,15 +54,16 @@ $base2: hsla(211, 28%, 29%, 1);
 	position: fixed;
 	z-index: 100;
 	left: 0;
-	top: 3rem;
+	top: 0;
+	bottom: 0;
 
-	background-image: linear-gradient($mainD1, $mainD2);
-	//background-color: $main;
+	//background-image: linear-gradient($mainD1, $mainD2);
+	background-color: $mainL1;
 
 	//color: white;
 	//padding-left: 1rem;
 
-	box-shadow: 2px 2px 4px gray;
+	box-shadow: 1rem 1rem 2rem hsla(0, 0, 0, 0.2);
 	&__header {
 		padding: 1rem 0;
 		//margin-left: 0rem;
@@ -87,8 +88,10 @@ $base2: hsla(211, 28%, 29%, 1);
 	&__section-header {
 		font-weight: bold;
 		text-align: left;
-		padding: 1rem 0 1rem 1rem;
-		//border-top: 0.1rem solid $mainD2;
+		padding: 1rem 0;
+		margin: 0 1rem;
+		border-top: 0.1rem solid $mainD2;
+		font-size: 1.5rem;
 	}
 
 	&__section-list {
@@ -101,7 +104,7 @@ $base2: hsla(211, 28%, 29%, 1);
 	}
 	li {
 		padding: 5px 0;
-		font-size: 0.8rem;
+		font-size: 1rem;
 		&:hover {
 			cursor: pointer;
 		}
