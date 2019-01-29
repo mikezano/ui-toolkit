@@ -15,6 +15,26 @@
 			form.form
 				fieldset 
 					legend.form__legend Whats your ELF name?
+
+					.container
+						input#tab1(type="radio" name="tabs" checked)
+						label(for="tab1") Tab 1
+						input#tab2(type="radio" name="tabs")
+						label(for="tab2") Tab 2
+						input#tab3(type="radio" name="tabs")
+						label(for="tab3") Tab 3
+						input#tab4(type="radio" name="tabs")
+						label(for="tab4") Tab 4
+						.content
+							.content1
+							.content2
+								| Content for Tab 2
+							.content3
+								img(src="https://tinyurl.com/y8n2spmr" width="200" height="200")
+							.content4
+								| Content for Tab 4
+
+
 					label.form__label First Letter of your name
 					input.form__input(
 						type="text" 
@@ -39,90 +59,97 @@
 		template(slot='bad-content')
 			form.form
 				fieldset 
-					legend.form__legend Whats your ELF name?
-					label.form__label First Letter of your name
-					input.form__input(
-						type="text" 
-						name="name" 
-						placeholder="A-Z"
-						v-model="selectedLetter")
-					label.form__label Month you were born
+					legend.form__legend Person Search
+					label.form__label First name
 					input.form__input(
 						type="text"
 						name="name"
-						placeholder="Jan - Dec"
-						v-model="selectedMonth")
-					label.form__label Fruit
+						placeholder="Enter a first name")
+					label.form__label Middle Name
+					input.form__input(
+						type="text"
+						name="name"
+						placeholder="Enter a middle name")
+					label.form__label Last Name
+					input.form__input(
+						type="text"
+						name="name"
+						placeholder="Enter a last name")
+					label.form__label Title
 					select.form__dropdown
-						option(selected="selected") Select fruit
-						option 🍓 Strawberry
-						option 🍍 Pineapple
-						option 🥝 Kiwi
-					label.form__label Is round?
+						option(selected="selected") Select title
+						option Mr.
+						option Mrs.
+						option Ms.
+					label.form__label Gender
 					.form__checkboxes
 					
 						.checkbox-group
 							.checkbox
 								input#one.checkbox__button(type='radio' name='test', value='one')
-								label.checkbox__label(for='one') One
+								label.checkbox__label(for='one') Male
 							.checkbox
 								input#two.checkbox__button(type='radio' name='test', value='two')
-								label.checkbox__label(for='two') Two
-							.checkbox
-								input#three.checkbox__button(type='radio' name='test', value='three')
-								label.checkbox__label(for='three') Three
-					label.form__label Is color
-					.form__checkboxes
-					
-						.checkbox-group
-							.checkbox
-								input#one.checkbox__button(type='radio' name='test', value='one')
-								label.checkbox__label(for='one') One
-							.checkbox
-								input#two.checkbox__button(type='radio' name='test', value='two')
-								label.checkbox__label(for='two') Two
-							.checkbox
-								input#three.checkbox__button(type='radio' name='test', value='three')
-								label.checkbox__label(for='three') Three
-					label.form__label Primary title
-					input.form__input(
-						type="text" 
-						name="name" 
-						placeholder="A-Z"
-						v-model="selectedLetter")
-					label.form__label Secondary title
-					input.form__input(
-						type="text"
-						name="name"
-						placeholder="Jan - Dec"
-						v-model="selectedMonth")
+								label.checkbox__label(for='two') Female
 
+					label.form__label Age Range
+					.form__checkboxes
+						.checkbox-group
+							.checkbox
+								input#young.checkbox__button(type='radio' name='age-range', value='one')
+								label.checkbox__label(for='young') 0 - 25
+							.checkbox
+								input#middle.checkbox__button(type='radio' name='age-range', value='two')
+								label.checkbox__label(for='middle') 26 - 50
+							.checkbox
+								input#old.checkbox__button(type='radio' name='age-range', value='three')
+								label.checkbox__label(for='old') 50 +
+					label.form__label Date of Birth
+					input.form__input(
+						type="date" 
+						placeholder="Birthdate")
+					label.form__label Phone Number
+					input.form__input(
+						type="phone" )
+					label.form__label State
+					select.form__dropdown
+						option(selected="selected") Select state
+						option Alaska
+						option Arizona
+						option California
+						option Oregon
+						option New York
+						option New Jersey
+						option Wyoming
+						option ...
+					label.form__label City
+					select.form__dropdown
+						option(selected="selected") Select city
+						option City 1
+						option City 2
+						option City 3
+						option City 4
+						option City 5
+						option City 6
+						option City 7
+						option ...
+					label.form__label Vetran?
+					.form__checkboxes
+						.checkbox-group
+							.checkbox
+								input#no-vetran.checkbox__button(type='radio' name='vetran', value='one')
+								label.checkbox__label(for='no-vetran') No
+							.checkbox
+								input#yes-vetran.checkbox__button(type='radio' name='vetran', value='two')
+								label.checkbox__label(for='yes-vetran') Yes
 					.form__footer
 						.default.btn-circle No
 						.default.btn-circle(@click='showName') OK
-
-					//.container
-						input#tab1(type="radio" name="tabs" checked)
-						label(for="tab1") Tab 1
-						input#tab2(type="radio" name="tabs")
-						label(for="tab2") Tab 2
-						input#tab3(type="radio" name="tabs")
-						label(for="tab3") Tab 3
-						input#tab4(type="radio" name="tabs")
-						label(for="tab4") Tab 4
-						.content
-							.content1
-							.content2
-								| Content for Tab 2
-							.content3
-								img(src="https://tinyurl.com/y8n2spmr" width="200" height="200")
-							.content4
-								| Content for Tab 4
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Example from "@/components/examples/Example.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import Example from '@/components/examples/Example.vue';
 
 interface Hash {
 	[s: string]: string;
@@ -130,30 +157,30 @@ interface Hash {
 
 @Component({
 	components: {
-		Example
-	}
+		Example,
+	},
 })
 export default class ExampleFormExcessFields extends Vue {
 	public letterToName: Hash = {};
 	public monthToName: Hash = {};
-	private selectedLetter: string = "";
-	private selectedMonth: string = "";
-	private selectedFruit: string = "";
+	private selectedLetter: string = '';
+	private selectedMonth: string = '';
+	private selectedFruit: string = '';
 
 	public mounted() {
-		this.letterToName["A"] = "Perky";
-		this.letterToName["B"] = "Nipper";
-		this.letterToName["C"] = "Bubbles";
-		this.letterToName["D"] = "Happy";
+		this.letterToName['A'] = 'Perky';
+		this.letterToName['B'] = 'Nipper';
+		this.letterToName['C'] = 'Bubbles';
+		this.letterToName['D'] = 'Happy';
 
-		this.monthToName["Jan"] = "Angel-Pants";
-		this.monthToName["Feb"] = "Floppy-Feet";
-		this.monthToName["Mar"] = "Plum-Pants";
+		this.monthToName['Jan'] = 'Angel-Pants';
+		this.monthToName['Feb'] = 'Floppy-Feet';
+		this.monthToName['Mar'] = 'Plum-Pants';
 	}
 
 	public showName() {
 		console.log(this.selectedLetter);
-		console.log(this.letterToName["A"]);
+		console.log(this.letterToName['A']);
 		alert(this.selectedLetter);
 		const finalName = `${this.letterToName[this.selectedLetter]} ${
 			this.monthToName[this.selectedMonth]
@@ -164,8 +191,8 @@ export default class ExampleFormExcessFields extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "src/toolkit.scss";
-@import "src/variables.scss";
+@import 'src/toolkit.scss';
+@import 'src/variables.scss';
 
 .default {
 	@include btn-circle(white, 14px);
