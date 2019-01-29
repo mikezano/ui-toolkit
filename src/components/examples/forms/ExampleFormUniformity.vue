@@ -12,45 +12,34 @@
 		template(slot='good-content')
 			form.form
 				fieldset 
-					legend.form__legend Whats your ELF name?
-					label.form__label First Letter of your name
+					legend.form__legend What's your ELF name?
+					label.form__label First letter of your name
 					input.form__input(
 						type="text" 
 						name="name" 
-						placeholder="A-Z"
-						v-model="selectedLetter")
+						placeholder="A-Z")
 					label.form__label Month you were born
 					input.form__input(
 						type="text"
 						name="name"
-						placeholder="Jan - Dec"
-						v-model="selectedMonth")
-					label.form__label Fruit
-					select.form__dropdown
-						option(selected="selected") Select fruit
-						option 🍓 Strawberry
-						option 🍍 Pineapple
-						option 🥝 Kiwi
+						placeholder="Jan - Dec")
 					.form__footer
-						.default.btn-circle No
-						.default.btn-circle(@click='showName') OK
+						button.simple-button Find out your name!
 		template(slot='bad-content')
 			form.form-bad
 				fieldset 
-					legend.form__legend Select your handle
+					legend.form__legend What's your ELF name ?
 					.form__item
-						label Name
-						input(type="text" name="name" placeholder="Enter Name")
+						label First letter of your name
+						input(type="text" name="name" placeholder="A-Z")
 					.form__item
-						label Icon
-						select
-							option(selected="selected") Select option
-							option Alpha
-							option Beta
-							option Charlie
+						label Month you were born
+						input(
+							type="text"
+							name="name"
+							placeholder="Jan - Dec")
 					.form__footer
-						.default.btn-circle(@click='showName') OK
-						.default.btn-circle No
+						button.simple-button Find out your name!
 </template>
 
 <script lang="ts">
@@ -100,9 +89,6 @@ export default class ExampleFormUniformity extends Vue {
 @import 'src/toolkit.scss';
 @import 'src/variables.scss';
 
-.default {
-	@include btn-circle(white, 14px);
-}
 .form {
 	width: 20rem;
 	fieldset {
@@ -126,7 +112,13 @@ export default class ExampleFormUniformity extends Vue {
 		margin: 0;
 	}
 	&__footer {
-		display: flex;
+		margin-left: 0rem;
+		button {
+			@include simpleButton();
+			&.simple-button {
+				margin-left: 0;
+			}
+		}
 	}
 }
 
@@ -136,7 +128,6 @@ export default class ExampleFormUniformity extends Vue {
 	}
 	input,
 	select {
-		width: 80%;
 		padding: 0.3rem;
 		margin: 0.8rem auto;
 		border: 0.1rem solid $mainD1;

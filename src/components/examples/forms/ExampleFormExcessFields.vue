@@ -14,48 +14,68 @@
 		template(slot='good-content')
 			form.form
 				fieldset 
-					legend.form__legend Whats your ELF name?
+					legend.form__legend Person Search
 
-					.container
-						input#tab1(type="radio" name="tabs" checked)
-						label(for="tab1") Tab 1
-						input#tab2(type="radio" name="tabs")
-						label(for="tab2") Tab 2
-						input#tab3(type="radio" name="tabs")
-						label(for="tab3") Tab 3
-						input#tab4(type="radio" name="tabs")
-						label(for="tab4") Tab 4
-						.content
+					.form-sections.tabs
+						input.tabs__tab#tab1(type="radio" name="tabs" checked)
+						label.tabs__label(for="tab1") Basic
+						input.tabs__tab#tab2(type="radio" name="tabs")
+						label.tabs__label(for="tab2") Location
+						input.tabs__tab#tab3(type="radio" name="tabs")
+						label.tabs__label(for="tab3") Advanced
+						input.tabs__tab#tab4(type="radio" name="tabs")
+						label.tabs__label(for="tab4") ???
+						.tabs__content
 							.content1
+								label.form__label First name
+								input.form__input(
+									type="text"
+									name="name"
+									placeholder="Enter a first name")
+								label.form__label Last Name
+								input.form__input(
+									type="text"
+									name="name"
+									placeholder="Enter a last name")
 							.content2
-								| Content for Tab 2
+								label.form__label Phone Number
+								input.form__input(
+									type="phone" )
+								label.form__label State
+								select.form__dropdown
+									option(selected="selected") Select state
+									option Alaska
+									option Arizona
+									option California
+									option Oregon
+									option New York
+									option New Jersey
+									option Wyoming
+									option ...
+								label.form__label City
+								select.form__dropdown
+									option(selected="selected") Select city
+									option City 1
+									option City 2
+									option City 3
+									option City 4
+									option City 5
+									option City 6
+									option City 7
+									option ...
 							.content3
 								img(src="https://tinyurl.com/y8n2spmr" width="200" height="200")
 							.content4
-								| Content for Tab 4
-
-
-					label.form__label First Letter of your name
-					input.form__input(
-						type="text" 
-						name="name" 
-						placeholder="A-Z"
-						v-model="selectedLetter")
-					label.form__label Month you were born
-					input.form__input(
-						type="text"
-						name="name"
-						placeholder="Jan - Dec"
-						v-model="selectedMonth")
-					label.form__label Fruit
-					select.form__dropdown
-						option(selected="selected") Select fruit
-						option 🍓 Strawberry
-						option 🍍 Pineapple
-						option 🥝 Kiwi
+								label.form__label Fruit
+								select.form__dropdown
+									option(selected="selected") Select fruit
+									option 🍓 Strawberry
+									option 🍍 Pineapple
+									option 🥝 Kiwi
 					.form__footer
-						.default.btn-circle No
-						.default.btn-circle(@click='showName') OK
+						button.simple-button(@click='showName') OK
+						button.simple-button No
+
 		template(slot='bad-content')
 			form.form
 				fieldset 
@@ -143,8 +163,8 @@
 								input#yes-vetran.checkbox__button(type='radio' name='vetran', value='two')
 								label.checkbox__label(for='yes-vetran') Yes
 					.form__footer
-						.default.btn-circle No
-						.default.btn-circle(@click='showName') OK
+						button.simple-button(@click='showName') OK
+						button.simple-button No
 </template>
 
 <script lang="ts">
@@ -197,7 +217,7 @@ export default class ExampleFormExcessFields extends Vue {
 .default {
 	@include btn-circle(white, 14px);
 }
-//@include underlined_tabs();
+
 .form {
 	//width: 20rem;
 	fieldset {
@@ -220,6 +240,7 @@ export default class ExampleFormExcessFields extends Vue {
 		padding: 0;
 		margin: 0;
 		display: block;
+		font-size: 1rem;
 	}
 	&__checkboxes {
 		margin: 0.2rem auto 0.6rem;
@@ -227,7 +248,12 @@ export default class ExampleFormExcessFields extends Vue {
 	}
 	&__footer {
 		display: flex;
-		flex-direction: row-reverse;
+		button {
+			@include simpleButton();
+		}
+		button:first-child {
+			margin-left: 0;
+		}
 	}
 }
 
@@ -247,5 +273,9 @@ export default class ExampleFormExcessFields extends Vue {
 		display: flex;
 		flex-direction: row-reverse;
 	}
+}
+
+.form-sections {
+	@include underlined_tabs(4);
 }
 </style>
