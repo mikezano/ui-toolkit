@@ -2,14 +2,15 @@
 	.example
 		.example__title
 			slot(name='title')
-		.example__good-reason
-			slot(name='good-reason')
 		.example__bad-reason
 			slot(name='bad-reason')
-		.example__good-content
-			slot(name='good-content')
+		.example__good-reason
+			slot(name='good-reason')
 		.example__bad-content
 			slot(name='bad-content')
+		.example__good-content
+			slot(name='good-content')
+
 </template>
 
 <script lang="ts">

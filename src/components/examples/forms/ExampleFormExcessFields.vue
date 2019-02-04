@@ -4,13 +4,15 @@
 			| 2. Reduce the amount of fields
 		template(slot='good-reason')
 			b Good - 
-			span Lots of possibilities, seperate them into different tabs
-			| placing the less important ones on the secondary tabs
+			span The list of possiblities are grouped into different sections 
+			| (with tabs in this case) leaving the most common search fields 
+			| presented by default as the first thing they see.
 		template(slot='bad-reason')
 			b Not as good - 
-			span Do you really need that many optiosn to search by
-			| A smorgasbord of fields lacking rythm in balance leaving 
-			| the user confused as to what should be filled in.
+			span Do you really need this many options to search? Most likely 
+			| there are some 'most used fields' that should be presented first
+			| . Having so many options creates too much 'noise' and users will
+			| ignore fields anyways.
 		template(slot='good-content')
 			form.form
 				fieldset 
@@ -73,8 +75,7 @@
 									option 🍍 Pineapple
 									option 🥝 Kiwi
 					.form__footer
-						button.simple-button(@click='showName') OK
-						button.simple-button No
+						button.simple-button(@click='showName') Search!
 
 		template(slot='bad-content')
 			form.form
@@ -163,8 +164,7 @@
 								input#yes-vetran.checkbox__button(type='radio' name='vetran', value='two')
 								label.checkbox__label(for='yes-vetran') Yes
 					.form__footer
-						button.simple-button(@click='showName') OK
-						button.simple-button No
+						button.simple-button(@click='showName') Search!
 </template>
 
 <script lang="ts">

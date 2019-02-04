@@ -10,37 +10,61 @@
 			b Not as good - 
 			span Upon clicking nothing happens
 		template(slot='good-content')
-			form.form
-				fieldset 
-					legend.form__legend What's your ELF name?
-					label.form__label First letter of your name
-					input.form__input(
+			form#example.simple-form(onsubmit="return;")
+				fieldset.simple-form__fieldset
+					legend.simple-form__legend Search for something
+					label.simple-form__label Search Term
+					input.simple-form__input(
 						type="text" 
 						name="name" 
-						placeholder="A-Z")
-					label.form__label Month you were born
-					input.form__input(
-						type="text"
-						name="name"
-						placeholder="Jan - Dec")
-					.form__footer
-						button.simple-button Find out your name!
+						placeholder="Enter anything you can think of!")
+					.simple-form__footer
+						button(@click="toggleLoader()").simple-button Find that thing!
+						div(v-if="isLoading")
+							span.simple-spin 🔎
+							span Searching...
 		template(slot='bad-content')
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import Example from '@/components/examples/Example.vue';
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Example from "@/components/examples/Example.vue";
 
 @Component({
 	components: {
-		Example,
-	},
+		Example
+	}
 })
-export default class ExampleLoading extends Vue {}
+export default class ExampleLoading extends Vue {
+	private isLoading: boolean = false;
+	public toggleLoader(): void {
+		this.isLoading = !this.isLoading;
+		setTimeout(() => {
+			this.isLoading = false;
+		}, 1000);
+	}
+}
 </script>
 
 <style lang="scss" scoped>
-@import 'src/toolkit.scss';
-@import 'src/variables.scss';
+@import "src/toolkit.scss";
+@import "src/variables.scss";
+
+#example {
+	@include simple-form();
+}
+
+.simple-spin {
+	display: inline-block;
+	animation: simple-spin 1s linear infinite;
+	font-size: 1.8rem;
+}
+@keyframes simple-spin {
+	from {
+		transform: rotateY(0);
+	}
+	to {
+		transform: rotateY(360deg);
+	}
+}
 </style>

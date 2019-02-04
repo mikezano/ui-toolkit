@@ -1,14 +1,17 @@
 <template lang="pug">
 	Example
 		template(slot='title')
-			| 1. Keep things uniform
+			| 1. Keep things uniFORM 😉
 		template(slot='good-reason')
 			b Good - 
-			span inputs are sized the same, creating a nice Feng Shui feel...aaahhh
+			span Inputs are sized the same, alignment is all to the left 
+			| creating a nice rythm to the form making it easiest for your 
+			| eye to scan downwards from point A to B.
 		template(slot='bad-reason')
-			b Not as good - 
-			span Different alignments between the header text and 
-			| the form contents, spacing is off,creating a jagged, unpolished look 😨.
+			b Not Good - 
+			span Different alignments between the header, text and 
+			| the form contents, no spacing between inputs and text, all of which
+			| create a jagged, unpolished look 😨.
 		template(slot='good-content')
 			form.form
 				fieldset 
