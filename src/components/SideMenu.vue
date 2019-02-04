@@ -12,10 +12,11 @@
 				router-link(to="/how_to_use" tag="li") 
 				router-link(to="/test" tag="li") Test
 
-			.side-menu__section-header Properly using...
+			.side-menu__section-header PROPERLY USING..
 			ul.side-menu__section-list
 				router-link(to="/buttons" tag="li") Buttons
 				router-link(to="/forms" tag="li") Forms
+				router-link(to="/loaders" tag="li") Loaders
 
 
 			.side-menu__section-header Sample Site
@@ -28,18 +29,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({})
 export default class SideMenu extends Vue {
 	public close() {
-		this.$emit("closeMenu");
+		this.$emit('closeMenu');
 	}
 }
 </script>
 
 <style lang="scss">
-@import "src/variables.scss";
+@import 'src/variables.scss';
 $base1: hsla(153, 50%, 48%, 1);
 $base2: hsla(211, 28%, 29%, 1);
 
@@ -88,10 +89,10 @@ $base2: hsla(211, 28%, 29%, 1);
 	&__section-header {
 		font-weight: bold;
 		text-align: left;
-		padding: 1rem 0;
+		padding: 0.4rem 0;
 		margin: 0 1rem;
 		border-top: 0.1rem solid $mainD2;
-		font-size: 1.5rem;
+		font-size: 1rem;
 	}
 
 	&__section-list {
