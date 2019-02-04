@@ -4,15 +4,11 @@
 			icon(name="close" class="close-icon")
 		.side-menu__header
 			img(src="./../assets/logo.png")
-			router-link(to="/style_guide" tag="p") Style Guide
+			router-link(to="/style_guide" tag="p") gUIde
 		
 		.side-menu__sections
-			.side-menu__section-header Usage
-			ul.side-menu__section-list
-				router-link(to="/how_to_use" tag="li") 
-				router-link(to="/test" tag="li") Test
 
-			.side-menu__section-header PROPERLY USING..
+			.side-menu__section-header When you use...
 			ul.side-menu__section-list
 				router-link(to="/buttons" tag="li") Buttons
 				router-link(to="/forms" tag="li") Forms
@@ -21,7 +17,7 @@
 
 			.side-menu__section-header Sample Site
 			ul.side-menu__section-list
-				router-link(to="/style_guide/grid_layouts" tag="li") CSS Grid
+				router-link(to="/style_guide/grid_layouts" tag="li") Countries of the world
 
 			.side-menu__section-header More Resources
 			ul.side-menu__section-list
@@ -29,18 +25,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class SideMenu extends Vue {
 	public close() {
-		this.$emit('closeMenu');
+		this.$emit("closeMenu");
 	}
 }
 </script>
 
 <style lang="scss">
-@import 'src/variables.scss';
+@import "src/variables.scss";
 $base1: hsla(153, 50%, 48%, 1);
 $base2: hsla(211, 28%, 29%, 1);
 

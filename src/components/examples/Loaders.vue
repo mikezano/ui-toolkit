@@ -1,7 +1,7 @@
 <template lang="pug">
 	.home
-		h1 Forms
-		.message
+		h1 Loaders
+		.message(style="text-align:left;")
 			| Indicating that 'something' is happening tends to be a problem in that its not
 			| always obvious that you are waiting because nothing conveys the issue.
 		
@@ -9,13 +9,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import ExampleLoading from '@/components/examples/loading/ExampleLoading.vue';
+import { Component, Prop, Vue } from "vue-property-decorator";
+import ExampleLoading from "@/components/examples/loading/ExampleLoading.vue";
 
 @Component({
 	components: {
-		ExampleLoading,
-	},
+		ExampleLoading
+	}
 })
 export default class Loaders extends Vue {}
 </script>

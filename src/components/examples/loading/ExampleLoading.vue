@@ -1,16 +1,16 @@
 <template lang="pug">
 	Example
 		template(slot='title')
-			| 1. Show a loader on small actions
+			| 1. Show an unobtrusive loader for actions
 		template(slot='good-reason')
 			b Good - 
-			span The button becomes the loader in this case making it immediately
-			| visible what is going on.
+			span The button here has a loader indicator next to the input 
+			| which immediately appears and would remain until the action completes.
 		template(slot='bad-reason')
 			b Not as good - 
 			span Upon clicking nothing happens
 		template(slot='good-content')
-			form#example.simple-form(onsubmit="return;")
+			form#example.simple-form(v-on:submit.prevent)
 				fieldset.simple-form__fieldset
 					legend.simple-form__legend Search for something
 					label.simple-form__label Search Term
@@ -37,11 +37,12 @@ import Example from "@/components/examples/Example.vue";
 })
 export default class ExampleLoading extends Vue {
 	private isLoading: boolean = false;
+
 	public toggleLoader(): void {
 		this.isLoading = !this.isLoading;
 		setTimeout(() => {
 			this.isLoading = false;
-		}, 1000);
+		}, 3000);
 	}
 }
 </script>
@@ -55,7 +56,6 @@ export default class ExampleLoading extends Vue {
 }
 
 .simple-spin {
-	display: inline-block;
 	animation: simple-spin 1s linear infinite;
 	font-size: 1.8rem;
 }

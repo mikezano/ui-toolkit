@@ -1,10 +1,10 @@
 <template lang="pug">
 	.home
 		h1 Forms
-		.message
-			| Forms asily get out of hand when trying to provide a buffet.  Elimainating the cruft
-			| will make it asier to us and giv you back screen space for things that matter.  Form layouts that are
-			| not sized equally, when buttons get disabled, and the interaction after proceding are covered here.
+		.message(style="text-align:left;")
+			|    Forms easily get out of hand when trying to provide a smorgasbord of options.  Elimainating the cruft
+			| will give you back screen space for things that matter.  Form layouts that are
+			| not sized equally, when buttons should be disabled, and the interaction after submitting covered here.
 		
 		ExampleFormUniformity
 		ExampleFormExcessFields
