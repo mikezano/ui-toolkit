@@ -6,16 +6,19 @@
 			| always obvious that you are waiting because nothing conveys the issue.
 		
 		ExampleLoading
+		ExampleLoadingArea
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import ExampleLoading from "@/components/examples/loading/ExampleLoading.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import ExampleLoading from '@/components/examples/loading/ExampleLoading.vue';
+import ExampleLoadingArea from '@/components/examples/loading/ExampleLoadingArea.vue';
 
 @Component({
 	components: {
-		ExampleLoading
-	}
+		ExampleLoading,
+		ExampleLoadingArea,
+	},
 })
 export default class Loaders extends Vue {}
 </script>

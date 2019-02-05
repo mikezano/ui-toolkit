@@ -1,4 +1,4 @@
-<template lang="pug">
+ <template lang="pug">
 	Example
 		template(slot='title')
 			| 1. Show an unobtrusive loader for actions
@@ -24,16 +24,26 @@
 							span.simple-spin 🔎
 							span Searching...
 		template(slot='bad-content')
+			form#example.simple-form(v-on:submit.prevent)
+				fieldset.simple-form__fieldset
+					legend.simple-form__legend Search for something
+					label.simple-form__label Search Term
+					input.simple-form__input(
+						type="text" 
+						name="name" 
+						placeholder="Enter anything you can think of!")
+					.simple-form__footer
+						button.simple-button Find that thing!
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Example from "@/components/examples/Example.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import Example from '@/components/examples/Example.vue';
 
 @Component({
 	components: {
-		Example
-	}
+		Example,
+	},
 })
 export default class ExampleLoading extends Vue {
 	private isLoading: boolean = false;
@@ -48,8 +58,8 @@ export default class ExampleLoading extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "src/toolkit.scss";
-@import "src/variables.scss";
+@import 'src/toolkit.scss';
+@import 'src/variables.scss';
 
 #example {
 	@include simple-form();
