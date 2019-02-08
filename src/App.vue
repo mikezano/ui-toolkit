@@ -9,49 +9,49 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import SideMenu from "@/components/SideMenu.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import SideMenu from '@/components/SideMenu.vue';
 
 @Component({
 	components: {
-		SideMenu
+		SideMenu,
 	},
-	name: "App"
+	name: 'App',
 })
 export default class App extends Vue {
-	public static COMPONENTS: string = "Components";
-	public static SINGLE_COMPONENT: string = "Single Component";
+	public static COMPONENTS: string = 'Components';
+	public static SINGLE_COMPONENT: string = 'Single Component';
 	public isShowingSideMenu: boolean = false;
 	public app: HTMLElement | null = null;
 
 	public mounted(): void {
-		this.app = document.getElementById("app");
+		this.app = document.getElementById('app');
 	}
 
 	public toggleSideMenu() {
 		this.isShowingSideMenu = !this.isShowingSideMenu;
 
 		if (this.isShowingSideMenu === true) {
-			this.app!.addEventListener("click", this.closeSideMenu, {
-				capture: true
+			this.app!.addEventListener('click', this.closeSideMenu, {
+				capture: true,
 			});
 		}
 	}
 	public closeSideMenu() {
 		this.isShowingSideMenu = false;
-		this.app!.removeEventListener("click", this.closeSideMenu);
+		this.app!.removeEventListener('click', this.closeSideMenu);
 	}
 }
 </script>
 
 <style lang="scss">
-@import "src/variables.scss";
+@import 'src/variables.scss';
 body {
 	background: linear-gradient($mainL1, $mainL2);
 	background-repeat: no-repeat;
 }
 #app {
-	font-family: "Avenir", Helvetica, Arial, sans-serif;
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;

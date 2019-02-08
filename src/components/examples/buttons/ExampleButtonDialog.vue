@@ -27,20 +27,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Example from "@/components/examples/Example.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import Example from '@/components/examples/Example.vue';
 
 @Component({
 	components: {
-		Example
-	}
+		Example,
+	},
 })
 export default class ExampleButtonDialog extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import "src/toolkit.scss";
-@import "src/variables.scss";
+@import 'src/toolkit.scss';
+@import 'src/variables.scss';
 
 .default {
 	@include btn-circle(white, 14px);

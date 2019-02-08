@@ -13,17 +13,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import ExampleButtonDialog from "@/components/examples/buttons/ExampleButtonDialog.vue";
-import ExampleButtonForm from "@/components/examples/buttons/ExampleButtonForm.vue";
-import ExampleButtonTable from "@/components/examples/buttons/ExampleButtonTable.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import ExampleButtonDialog from '@/components/examples/buttons/ExampleButtonDialog.vue';
+import ExampleButtonForm from '@/components/examples/buttons/ExampleButtonForm.vue';
+import ExampleButtonTable from '@/components/examples/buttons/ExampleButtonTable.vue';
 
 @Component({
 	components: {
 		ExampleButtonDialog,
 		ExampleButtonForm,
-		ExampleButtonTable
-	}
+		ExampleButtonTable,
+	},
 })
 export default class Buttons extends Vue {}
 </script>

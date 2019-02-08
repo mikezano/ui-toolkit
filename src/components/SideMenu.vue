@@ -25,18 +25,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({})
 export default class SideMenu extends Vue {
 	public close() {
-		this.$emit("closeMenu");
+		this.$emit('closeMenu');
 	}
 }
 </script>
 
 <style lang="scss">
-@import "src/variables.scss";
+@import 'src/variables.scss';
 $base1: hsla(153, 50%, 48%, 1);
 $base2: hsla(211, 28%, 29%, 1);
 

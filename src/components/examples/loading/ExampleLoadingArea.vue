@@ -63,16 +63,16 @@ import Example from '@/components/examples/Example.vue';
 })
 export default class ExampleLoadingArea extends Vue {
 	public mounted(): void {
-		var el: HTMLElement | null = document.getElementById(
+		const el: HTMLElement | null = document.getElementById(
 			'#example-good-table',
 		);
-		var rect: ClientRect = el!.getBoundingClientRect();
-		var width: number = rect.width;
-		var height: number = rect.height;
-		var top: number = rect.top;
-		var left: number = rect.left;
+		const rect: ClientRect = el!.getBoundingClientRect();
+		const width: number = rect.width;
+		const height: number = rect.height;
+		const top: number = rect.top;
+		const left: number = rect.left;
 
-		var loaderDiv: HTMLElement | null = document.getElementById(
+		const loaderDiv: HTMLElement | null = document.getElementById(
 			'#loader-div',
 		);
 

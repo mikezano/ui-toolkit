@@ -1,23 +1,20 @@
 <template lang="pug">
 	Example
 		template(slot='title')
-			| 2. Reduce the amount of fields
+			| 2. Reducing amount of fields
 		template(slot='good-reason')
 			b Good - 
-			span The list of possiblities are grouped into different sections 
-			| (with tabs in this case) leaving the most common search fields 
-			| presented by default as the first thing they see.
+			span Lots of possibilities, seperate them into different tabs
+			| placing the less important ones on the secondary tabs
 		template(slot='bad-reason')
 			b Not as good - 
-			span Do you really need this many options to search? Most likely 
-			| there are some 'most used fields' that should be presented first
-			| . Having so many options creates too much 'noise' and users will
-			| ignore fields anyways.
+			span Do you really need this many options to search for something?
+			|  of fields lacking rythm in balance leaving 
+			| the user confused as to what should be filled in.
 		template(slot='good-content')
 			form.form
 				fieldset 
 					legend.form__legend Person Search
-
 					.form-sections.tabs
 						input.tabs__tab#tab1(type="radio" name="tabs" checked)
 						label.tabs__label(for="tab1") Basic
@@ -75,7 +72,8 @@
 									option 🍍 Pineapple
 									option 🥝 Kiwi
 					.form__footer
-						button.simple-button(@click='showName') Search!
+						button.simple-button(@click='showName') OK
+						button.simple-button No
 
 		template(slot='bad-content')
 			form.form
@@ -164,12 +162,13 @@
 								input#yes-vetran.checkbox__button(type='radio' name='vetran', value='two')
 								label.checkbox__label(for='yes-vetran') Yes
 					.form__footer
-						button.simple-button(@click='showName') Search!
+						button.simple-button(@click='showName') OK
+						button.simple-button No
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Example from "@/components/examples/Example.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import Example from '@/components/examples/Example.vue';
 
 interface Hash {
 	[s: string]: string;
@@ -177,42 +176,28 @@ interface Hash {
 
 @Component({
 	components: {
-		Example
-	}
+		Example,
+	},
 })
 export default class ExampleFormExcessFields extends Vue {
 	public letterToName: Hash = {};
 	public monthToName: Hash = {};
-	private selectedLetter: string = "";
-	private selectedMonth: string = "";
-	private selectedFruit: string = "";
-
-	public mounted() {
-		this.letterToName["A"] = "Perky";
-		this.letterToName["B"] = "Nipper";
-		this.letterToName["C"] = "Bubbles";
-		this.letterToName["D"] = "Happy";
-
-		this.monthToName["Jan"] = "Angel-Pants";
-		this.monthToName["Feb"] = "Floppy-Feet";
-		this.monthToName["Mar"] = "Plum-Pants";
-	}
+	private selectedLetter: string = '';
+	private selectedMonth: string = '';
+	private selectedFruit: string = '';
 
 	public showName() {
-		console.log(this.selectedLetter);
-		console.log(this.letterToName["A"]);
 		alert(this.selectedLetter);
 		const finalName = `${this.letterToName[this.selectedLetter]} ${
 			this.monthToName[this.selectedMonth]
 		}`;
-		console.log(finalName);
 	}
 }
 </script>
 
 <style lang="scss" scoped>
-@import "src/toolkit.scss";
-@import "src/variables.scss";
+@import 'src/toolkit.scss';
+@import 'src/variables.scss';
 
 .default {
 	@include btn-circle(white, 14px);

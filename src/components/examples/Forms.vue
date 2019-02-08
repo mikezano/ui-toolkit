@@ -11,15 +11,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import ExampleFormUniformity from "@/components/examples/forms/ExampleFormUniformity.vue";
-import ExampleFormExcessFields from "@/components/examples/forms/ExampleFormExcessFields.vue";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import ExampleFormUniformity from '@/components/examples/forms/ExampleFormUniformity.vue';
+import ExampleFormExcessFields from '@/components/examples/forms/ExampleFormExcessFields.vue';
 
 @Component({
 	components: {
 		ExampleFormUniformity,
-		ExampleFormExcessFields
-	}
+		ExampleFormExcessFields,
+	},
 })
 export default class Forms extends Vue {}
 </script>
