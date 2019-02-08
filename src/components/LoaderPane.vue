@@ -15,6 +15,7 @@ export default class LoaderPane extends Vue {
 
 	public mounted(): void {
 		debugger;
+		this.focusEl = 'mike';
 	}
 
 	public focusElChanged(newEl: string, oldEl: string) {
