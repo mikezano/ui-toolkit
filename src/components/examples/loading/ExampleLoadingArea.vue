@@ -1,6 +1,5 @@
  <template lang="pug">
 div
-	#loader-div
 	Example
 		template(slot='title')
 			| 2. Indicate what's going to change
@@ -12,10 +11,7 @@ div
 			b Not as good - 
 			span A change in one area causes
 		template(slot='good-content')
-			select
-				option A
-				option B
-				option C
+			button#change-table.simple-button(@click='toggleLoader()') Change Table
 			table#example-good-table.table
 				thead
 					tr
@@ -49,37 +45,27 @@ div
 						td AZ
 						td Japan
 		template(slot='bad-content')
+	LoaderPane(:focusEl="tableName" )
 
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import Example from '@/components/examples/Example.vue';
+import LoaderPane from '@/components/LoaderPane.vue';
 
 @Component({
 	components: {
 		Example,
+		LoaderPane,
 	},
 })
 export default class ExampleLoadingArea extends Vue {
-	public mounted(): void {
-		const el: HTMLElement | null = document.getElementById(
-			'#example-good-table',
-		);
-		const rect: ClientRect = el!.getBoundingClientRect();
-		const width: number = rect.width;
-		const height: number = rect.height;
-		const top: number = rect.top;
-		const left: number = rect.left;
+	public isShowingLoaderPane: boolean = false;
+	public tableName: string = 'example-good-table';
 
-		const loaderDiv: HTMLElement | null = document.getElementById(
-			'#loader-div',
-		);
-
-		loaderDiv!.style.top = String(top);
-		loaderDiv!.style.left = String(left);
-		loaderDiv!.style.width = String(width) + 'px';
-		loaderDiv!.style.height = String(height) + 'px';
+	public toggleLoader(): void {
+		this.isShowingLoaderPane = !this.isShowingLoaderPane;
 	}
 }
 </script>
@@ -91,8 +77,12 @@ export default class ExampleLoadingArea extends Vue {
 #example {
 	@include simple-form();
 }
+#change-table {
+	@include simpleButton();
+}
 #loader-div {
-	position: absolute;
+	position: fixed;
+	background-color: hsla(0, 0, 0, 0.5);
 }
 
 .table {

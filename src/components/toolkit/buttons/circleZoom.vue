@@ -7,6 +7,7 @@
 export default {
 	name: 'circle_zoom',
 };
+export default class CircleZoom extends Vue {}
 </script>
 
 <style lang="scss" scoped>
