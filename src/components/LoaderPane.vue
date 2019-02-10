@@ -14,15 +14,13 @@ export default class LoaderPane extends Vue {
 	@Prop() private focusEl!: string;
 
 	public mounted(): void {
-		debugger;
-		this.focusEl = 'mike';
+		this.setLoadingRegion(this.focusEl);
 	}
 
-	public focusElChanged(newEl: string, oldEl: string) {
-		debugger;
-		if (!newEl) return;
+	public setLoadingRegion(elementId: string) {
+		if (!elementId) return;
 
-		const el: HTMLElement | null = document.getElementById(newEl);
+		const el: HTMLElement | null = document.getElementById(elementId);
 
 		const rect: ClientRect = el!.getBoundingClientRect();
 		const width: number = rect.width;
@@ -37,6 +35,12 @@ export default class LoaderPane extends Vue {
 		loaderDiv!.style.left = String(left) + 'px';
 		loaderDiv!.style.width = String(width) + 'px';
 		loaderDiv!.style.height = String(height) + 'px';
+	}
+	public focusElChanged(newEl: string, oldEl: string) {
+		debugger;
+		if (!newEl) return;
+
+		this.setLoadingRegion(newEl);
 	}
 }
 </script>

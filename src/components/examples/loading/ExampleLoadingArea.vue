@@ -12,40 +12,73 @@ div
 			span A change in one area causes
 		template(slot='good-content')
 			button#change-table.simple-button(@click='toggleLoader()') Change Table
-			table#example-good-table.table
-				thead
-					tr
-						th Action
-						th City
-						th State
-						th Country
-				tbody
-					tr.table__row
-						td
-							.default.btn-circle ✏️
-						td Scottsdale
-						td AZ
-						td U.S.A
-					tr.table__row
-						td
-							.default.btn-circle ✏️
-						td Scottsdale
-						td AZ
-						td Pakistan
-					tr.table__row
-						td
-							.default.btn-circle ✏️
-						td Scottsdale
-						td AZ
-						td China
-					tr.table__row
-						td
-							.default.btn-circle ✏️
-						td Scottsdale
-						td AZ
-						td Japan
+			#table-area
+				table#example-good-table.table(v-if='isShowingPrimaryTable')
+					thead
+						tr
+							th Action
+							th City
+							th State
+							th Country
+					tbody
+						tr.table__row
+							td
+								.default.btn-circle ✏️
+							td Scottsdale
+							td AZ
+							td U.S.A
+						tr.table__row
+							td
+								.default.btn-circle ✏️
+							td Scottsdale
+							td AZ
+							td Pakistan
+						tr.table__row
+							td
+								.default.btn-circle ✏️
+							td Scottsdale
+							td AZ
+							td China
+						tr.table__row
+							td
+								.default.btn-circle ✏️
+							td Scottsdale
+							td AZ
+							td Japan
+				table#example-good-table.table(v-else)
+					thead
+						tr
+							th Action
+							th City
+							th State
+							th Country
+					tbody
+						tr.table__row
+							td
+								.default.btn-circle ✏️
+							td Scottsdale
+							td AZ
+							td U.S.A
+						tr.table__row
+							td
+								.default.btn-circle ✏️
+							td Scottsdale
+							td AZ
+							td Pakistan
+						tr.table__row
+							td
+								.default.btn-circle ✏️
+							td Scottsdale
+							td AZ
+							td China
+						tr.table__row
+							td
+								.default.btn-circle ✏️
+							td Scottsdale
+							td AZ
+							td Japan
 		template(slot='bad-content')
-	LoaderPane(:focusEl="tableName" )
+	LoaderPane(:focusEl="'table-area'" v-if='isShowingLoaderPane')
 
 </template>
 
@@ -62,7 +95,8 @@ import LoaderPane from '@/components/LoaderPane.vue';
 })
 export default class ExampleLoadingArea extends Vue {
 	public isShowingLoaderPane: boolean = false;
-	public tableName: string = 'example-good-table';
+	public isShowingPrimaryTable: boolean = true;
+	public tableName: string = 'table-area';
 
 	public toggleLoader(): void {
 		this.isShowingLoaderPane = !this.isShowingLoaderPane;
