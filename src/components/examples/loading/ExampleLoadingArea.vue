@@ -56,25 +56,25 @@ div
 						tr.table__row
 							td
 								.default.btn-circle ✏️
-							td Scottsdale
+							td Phoenix
 							td AZ
 							td U.S.A
 						tr.table__row
 							td
 								.default.btn-circle ✏️
-							td Scottsdale
+							td Phoenix
 							td AZ
 							td Pakistan
 						tr.table__row
 							td
 								.default.btn-circle ✏️
-							td Scottsdale
+							td Phoenix
 							td AZ
 							td China
 						tr.table__row
 							td
 								.default.btn-circle ✏️
-							td Scottsdale
+							td Phoenix
 							td AZ
 							td Japan
 		template(slot='bad-content')
@@ -99,7 +99,11 @@ export default class ExampleLoadingArea extends Vue {
 	public tableName: string = 'table-area';
 
 	public toggleLoader(): void {
-		this.isShowingLoaderPane = !this.isShowingLoaderPane;
+		this.isShowingLoaderPane = true;
+		setTimeout(() => {
+			this.isShowingPrimaryTable = !this.isShowingPrimaryTable;
+			this.isShowingLoaderPane = false;
+		}, 1000);
 	}
 }
 </script>
