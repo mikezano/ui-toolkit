@@ -1,5 +1,6 @@
 <template lang="pug">
 #loader-div
+	.message {{message}}
 </template>
 
 <script lang="ts">
@@ -12,7 +13,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 })
 export default class LoaderPane extends Vue {
 	@Prop() private focusEl!: string;
-
+	@Prop() private message!: string;
 	public mounted(): void {
 		this.setLoadingRegion(this.focusEl);
 	}
@@ -46,6 +47,19 @@ export default class LoaderPane extends Vue {
 </script>
 
 <style lang="scss">
+#loader-div {
+	position: fixed;
+	background-color: hsla(0, 0, 0, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.message {
+		color: white;
+		font-size: 2rem;
+		font-weight: bold;
+		text-shadow: 0.1rem 0.1rem 0.4rem hsla(0, 0, 0, 0.6);
+	}
+}
 </style>
 
 

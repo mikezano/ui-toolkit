@@ -5,80 +5,129 @@ div
 			| 2. Indicate what's going to change
 		template(slot='good-reason')
 			b Good - 
-			span Changing a value in one area affects the other.  This needs to be 
-			| clearly indicated
+			span Clicking the 'Change Table' button here creates an action 
+			| to bring to the users attention that new content is coming into the table.
 		template(slot='bad-reason')
-			b Not as good - 
-			span A change in one area causes
+			b Not so good - 
+			span A click of the 'Change Table' button switches out the table 
+			| with new content, but if you blink, you may miss the fact that 
+			| it changed!
 		template(slot='good-content')
 			button#change-table.simple-button(@click='toggleLoader()') Change Table
 			#table-area
 				table#example-good-table.table(v-if='isShowingPrimaryTable')
 					thead
 						tr
-							th Action
+							th Population
 							th City
-							th State
 							th Country
+							th 
 					tbody
 						tr.table__row
-							td
-								.default.btn-circle ✏️
-							td Scottsdale
-							td AZ
-							td U.S.A
-						tr.table__row
-							td
-								.default.btn-circle ✏️
-							td Scottsdale
-							td AZ
-							td Pakistan
-						tr.table__row
-							td
-								.default.btn-circle ✏️
-							td Scottsdale
-							td AZ
-							td China
-						tr.table__row
-							td
-								.default.btn-circle ✏️
-							td Scottsdale
-							td AZ
+							td 37.5
+							td Tokyo
 							td Japan
+							td 🇯🇵
+						tr.table__row
+							td 28.5
+							td Delhi
+							td India
+							td 🇮🇳
+						tr.table__row
+							td 25.6
+							td Shanghai
+							td China
+							td 🇨🇳
+						tr.table__row
+							td 21.7
+							td Sao Paulo
+							td Brazil
+							td 🇧🇷
+						tr.table__row
+							td 21.6
+							td Mexico City
+							td Mexico
+							td 🇲🇽
 				table#example-good-table.table(v-else)
 					thead
 						tr
-							th Action
-							th City
-							th State
+							th Population
 							th Country
+							th 
 					tbody
 						tr.table__row
-							td
-								.default.btn-circle ✏️
-							td Phoenix
-							td AZ
-							td U.S.A
-						tr.table__row
-							td
-								.default.btn-circle ✏️
-							td Phoenix
-							td AZ
-							td Pakistan
-						tr.table__row
-							td
-								.default.btn-circle ✏️
-							td Phoenix
-							td AZ
+							td 1.4 B
 							td China
+							td 🇨🇳
 						tr.table__row
-							td
-								.default.btn-circle ✏️
-							td Phoenix
-							td AZ
-							td Japan
+							td 1.3 B
+							td India
+							td 🇮🇳
+						tr.table__row
+							td 329 M
+							td United States
+							td 🇨🇳
+						tr.table__row
+							td 269 M
+							td Indonesia
+							td 🇧🇷
+						tr.table__row
+							td 212 M
+							td Brazil
+							td 🇧🇷
 		template(slot='bad-content')
-	LoaderPane(:focusEl="'table-area'" v-if='isShowingLoaderPane')
+			button#change-table.simple-button(@click='toggleUsTables()') Change Table
+			div Largest U.S. Populations
+			table#example-good-table.table(v-if='isShowingByUsCity')
+				thead
+					tr
+						th Population
+						th City
+						th State
+				tbody
+					tr.table__row
+						td 8.6
+						td New York
+						td New York
+					tr.table__row
+						td 3.9
+						td Los Angeles
+						td California
+					tr.table__row
+						td 2.7
+						td Chicago
+						td Illinois
+					tr.table__row
+						td 2.3
+						td Houston
+						td Texas
+					tr.table__row
+						td 1.6
+						td Phoenix
+						td Arizona
+			table#example-good-table.table(v-else)
+				thead
+					tr
+						th Population
+						th State
+				tbody
+					tr.table__row
+						td 39.7
+						td California
+					tr.table__row
+						td 28.7
+						td Texas
+					tr.table__row
+						td 21.1
+						td Florida
+					tr.table__row
+						td 19.8
+						td New York
+					tr.table__row
+						td 12.8
+						td Pennsylvania
+	transition(name="fade")
+		LoaderPane(:focusEl="'table-area'"  :message="'Loading'" v-if='isShowingLoaderPane')
 
 </template>
 
@@ -96,14 +145,18 @@ import LoaderPane from '@/components/LoaderPane.vue';
 export default class ExampleLoadingArea extends Vue {
 	public isShowingLoaderPane: boolean = false;
 	public isShowingPrimaryTable: boolean = true;
+	public isShowingByUsCity: boolean = true;
 	public tableName: string = 'table-area';
 
+	public toggleUsTables(): void {
+		this.isShowingByUsCity = !this.isShowingByUsCity;
+	}
 	public toggleLoader(): void {
 		this.isShowingLoaderPane = true;
 		setTimeout(() => {
 			this.isShowingPrimaryTable = !this.isShowingPrimaryTable;
 			this.isShowingLoaderPane = false;
-		}, 1000);
+		}, 3000);
 	}
 }
 </script>
@@ -112,15 +165,28 @@ export default class ExampleLoadingArea extends Vue {
 @import 'src/toolkit.scss';
 @import 'src/variables.scss';
 
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.1s ease-in;
+}
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
+}
+.fade-enter-to,
+.fade-leave {
+	opacity: 1;
+}
+
 #example {
 	@include simple-form();
 }
 #change-table {
 	@include simpleButton();
 }
-#loader-div {
-	position: fixed;
-	background-color: hsla(0, 0, 0, 0.5);
+
+#example-good-table {
+	width: 100%;
 }
 
 .table {
