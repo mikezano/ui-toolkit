@@ -2,7 +2,7 @@
 div
 	Example
 		template(slot='title')
-			| 2. Indicate what's going to change
+			| 2. Clearly indicate what will change
 		template(slot='good-reason')
 			b Good - 
 			span Clicking the 'Change Table' button here creates an action 
@@ -15,6 +15,7 @@ div
 		template(slot='good-content')
 			button#change-table.simple-button(@click='toggleLoader()') Change Table
 			#table-area
+				div(style="margin-top:1rem;") Largest World Populations
 				table#example-good-table.table(v-if='isShowingPrimaryTable')
 					thead
 						tr
@@ -77,7 +78,7 @@ div
 							td 🇧🇷
 		template(slot='bad-content')
 			button#change-table.simple-button(@click='toggleUsTables()') Change Table
-			div Largest U.S. Populations
+			div(style="margin-top:1rem;") Largest U.S. Populations
 			table#example-good-table.table(v-if='isShowingByUsCity')
 				thead
 					tr
@@ -132,24 +133,26 @@ div
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import Example from '@/components/examples/Example.vue';
-import LoaderPane from '@/components/LoaderPane.vue';
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Example from "@/components/examples/Example.vue";
+import LoaderPane from "@/components/LoaderPane.vue";
 
 @Component({
 	components: {
 		Example,
-		LoaderPane,
-	},
+		LoaderPane
+	}
 })
 export default class ExampleLoadingArea extends Vue {
 	public isShowingLoaderPane: boolean = false;
 	public isShowingPrimaryTable: boolean = true;
 	public isShowingByUsCity: boolean = true;
-	public tableName: string = 'table-area';
+	public tableName: string = "table-area";
 
 	public toggleUsTables(): void {
-		this.isShowingByUsCity = !this.isShowingByUsCity;
+		setTimeout(() => {
+			this.isShowingByUsCity = !this.isShowingByUsCity;
+		}, 3000);
 	}
 	public toggleLoader(): void {
 		this.isShowingLoaderPane = true;
@@ -162,8 +165,8 @@ export default class ExampleLoadingArea extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/toolkit.scss';
-@import 'src/variables.scss';
+@import "src/toolkit.scss";
+@import "src/variables.scss";
 
 .fade-enter-active,
 .fade-leave-active {

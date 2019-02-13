@@ -46,8 +46,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import Example from '@/components/examples/Example.vue';
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Example from "@/components/examples/Example.vue";
 
 interface Hash {
 	[s: string]: string;
@@ -55,15 +55,15 @@ interface Hash {
 
 @Component({
 	components: {
-		Example,
-	},
+		Example
+	}
 })
 export default class ExampleFormUniformity extends Vue {
 	public letterToName: Hash = {};
 	public monthToName: Hash = {};
-	private selectedLetter: string = '';
-	private selectedMonth: string = '';
-	private selectedFruit: string = '';
+	private selectedLetter: string = "";
+	private selectedMonth: string = "";
+	private selectedFruit: string = "";
 
 	public showName() {
 		const finalName = `${this.letterToName[this.selectedLetter]} ${
@@ -74,8 +74,8 @@ export default class ExampleFormUniformity extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/toolkit.scss';
-@import 'src/variables.scss';
+@import "src/toolkit.scss";
+@import "src/variables.scss";
 
 .form {
 	fieldset {
